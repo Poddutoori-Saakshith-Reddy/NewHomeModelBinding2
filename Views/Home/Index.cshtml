@@ -1,0 +1,159 @@
+﻿@model IEnumerable<NewHomeModelBinding2.Models.NewHomesDTO>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+<link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+<link href="~/lib/bootstrap/dist/js/bootstrap.min.js.map" rel="stylesheet" />
+
+
+<script src="~/js/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.7.1/nouislider.min.css" rel="stylesheet"/>
+<link href="~/css/newhome.css" rel="stylesheet" />
+@{
+	var house_count = 0;
+	var data = Model.newhomeslist
+}
+@foreach (var house in Model)
+{
+	var cs = house.NewHomesList.Select(size => size.HouseSize);
+
+	@foreach (var size in cs)
+	{
+		
+		house_count++;
+	}
+}
+<div class="container vw-100">
+	<div class="container">
+		<div class="row w-100 p-0 d-flex flex-wrap">
+			<div class="col-12 col-lg-7 col-xl-7 d-flex justify-content-start mb-2">
+
+				<button class="btn btn1 p-1"> VIEW ALL </button>
+				<button class="btn btn1 p-1" id="BSeries" onclick="FilterByBrand(Bseries)">B SERIES</button>
+				<button class="btn btn1 p-1" id="OSeries">O SERIES</button>
+
+			</div>
+			<div class="col-12 col-lg-5 col-xl-5 p-0 d-flex mb-2 justify-content-end mt-1 po vanish">
+
+				<p class="filterColor mb-0 mt-1"> view by </p>
+				<button class="btn1 filterColor p-1" onclick="imageChange('facades')"> FACADES </button>
+
+
+				<button class="btn1 filterColor p-1" onclick="imageChange('floorPlans')"> FLOORPLANS </button> 
+			</div>
+
+		</div>
+		<div class="container w-100">
+			<div class="row row-cols-1 row-cols-lg-7 row-cols-sm-1 row-cols-md-1 p-0 d-flex justify-content-start dropdown flex-wrap">
+
+				<button class="btn btn1 dropdown-toggle " id="ddmb1" data-bs-toggle="dropdown" aria-expanded="false"> 
+					<span class="align-self-baseline"> BUDGET:</span> <span class="space"> &emsp; &emsp;&emsp; </span>  <span class="me-auto">ANY</span>
+				</button>
+
+				<ul class="dropdown-menu align-content-center p-2 " aria-labelledby="ddmb1">
+					<div class="dropdown-item w-100">
+						<div class="slidecontainer d-flex justify-content-center">
+							<div id="slider"></div>
+						</div>
+					</div>
+					<div class="dropdown-text d-flex justify-content-center">
+						<p> <span id="budgetVal">211 - 488</span> </p>
+					</div>
+				</ul>
+
+				<button class="btn btn1 dropdown-toggle p-1 px-0" id="ddmb2" data-bs-toggle="dropdown">
+					<span> BLOCK WIDTH:</span> <span class="space"> &nbsp; </span> <span>ANY</span>
+				</button>
+
+				<ul class="dropdown-menu align-content-center p-2 " aria-labelledby="ddmb2">
+					<div class="dropdown-item w-100">
+						<div class="slidecontainer d-flex justify-content-center">
+							<div id="slider2"></div>
+						</div>
+					</div>
+					<div class="dropdown-text d-flex justify-content-center">
+						<p> <span id="blockWidthVal"> - </span> </p>
+					</div>
+				</ul>
+
+				<button class="btn btn1 dropdown-toggle p-1 px-0" id="ddmb3" data-bs-toggle="dropdown"> 
+					<span> BEDS:</span> <span class="space"> &nbsp; </span> <span>ANY</span>
+				</button>
+				<div class="dropdown-menu w-25 px-4 py-3 justify-content-center" aria-labelledby="ddmb3">
+					<ul class=" dropdown-item pagination p-0 m-0 justify-content-center">
+						<li class="page-item bsr activee"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">4</a></li>
+						<li class="page-item"><a class="page-link" href="#">5+</a></li>
+						<li class="page-item ber"><a class="page-link" href="#">Any</a></li>
+					</ul>  
+				</div>
+				<button class="btn btn1 dropdown-toggle p-1 px-0" id="ddmb4" data-bs-toggle="dropdown"> 
+					<span> BATHS:</span> <span class="space"> &nbsp; </span> <span>ANY</span>
+				</button>
+				<div class="dropdown-menu w-25 px-4 py-3 justify-content-center" aria-labelledby="ddmb4">
+					<ul class=" dropdown-item pagination p-0 m-0 justify-content-center">
+						<li class="page-item bsr"><a class="page-link" href="#">2</a></li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item"><a class="page-link" href="#">4+</a></li>
+						<li class="page-item ber"><a class="page-link" href="#">Any</a></li>
+					</ul>
+				</div>
+				<button class="btn btn1 dropdown-toggle p-1 px-0" id="ddmb5" data-bs-toggle="dropdown">
+					<span class="me-auto"> STOREYS:</span> <span class="space"> &nbsp; </span> <span class="ms-auto">ANY</span>
+				</button>
+				<div class="dropdown-menu w-25 px-4 py-3 justify-content-center" aria-labelledby="ddmb5">
+					<ul class=" dropdown-item pagination p-2 m-0 justify-content-center">
+						<li class="page-item bsr"><a class="page-link" href="#">Single</a></li>
+						<li class="page-item"><a class="page-link" href="#">Double</a></li>
+						<li class="page-item ber"><a class="page-link" href="#">Any</a></li>
+					</ul>
+				</div>
+				<button class="btn btn1 p-1 px-0 bg-dark fw-bolder text-white">
+					APPLY
+				</button>
+				<button class="btn btn1  p-1 bg-dark px-0 fw-bolder text-white">
+					CLEAR
+				</button>
+			</div>
+		</div>
+		<div class="container w-100 m-3 clr">
+			<div class="row pos d-flex justify-content-between">
+
+				<div class="col d-flex justify-content-end">
+					<p class="me-3">
+						Viewing <b>@house_count</b> homes
+						<div class="dropdown">
+							<div class="dropdown-toggle" id="feature" data-bs-toggle="dropdown">
+								Sort by <b>Featured</b>
+							</div>
+							<ul class="dropdown-menu pt-0 pb-0 wi justify-content-start" aria-labelledby="feature">
+								<li><div class="dropdown-item border-bottom border-black">Featured</div></li>
+
+								<li><div class="dropdown-item border-bottom border-black">House Name (A to Z)</div></li>
+
+								<li><div class="dropdown-item border-bottom border-black">House Name (Z to A)</div></li>
+
+								<li><div class="dropdown-item border-bottom border-black">House Size (Small to Large)</div></li>
+
+								<li><div class="dropdown-item border-bottom border-black">House Size (Large to Small)</div></li>
+
+								<li><div class="dropdown-item border-bottom border-black">Price (High to Low)</div></li>
+
+								<li><div class="dropdown-item">Price (Low to High)</div></li>
+
+							</ul>
+						</div>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div class="d-flex flex-wrap" id="AllCards">
+	@await Html.PartialAsync("_partialHomeView", Model)
+</div>
+
+<script src="~/js/newhomes.js"></script>

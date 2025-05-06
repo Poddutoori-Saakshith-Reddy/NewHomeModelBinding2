@@ -1,0 +1,172 @@
+﻿.ibox {
+    width: 400px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.card-body {
+    background-color: #e7e7e7;
+}
+
+.card-img-top{
+    height:300px;
+}
+.icon {
+    height: 24px;
+    width: 24px;
+    padding-right: 5px;
+}
+.icotext {
+    font-size: 16px;
+    color: #808080;
+    padding-right: 10px;
+}
+.f1 {
+    font-family: "Montserrat", serif;
+}
+.pagination button {
+    font-family: "Montserrat", Arial;
+    border-radius: 5px;
+    color: black;
+    padding: 6px 8px;
+    border: 1px solid #ddd;
+    font-size: 15px;
+    background-color: #ffffff;
+}
+.bt {
+    border: 1px solid #808080;
+    border-radius: 3px;
+    background-color: #ffffff;
+    padding: 5px;
+    color: #808080;
+    font-size: 12px;
+    margin-bottom: 10px;
+    margin-right:24px;
+}
+.lot {
+    padding-right: 13.5px;
+    padding-left: 13.5px;
+    background-color: #e7e7e7;
+    color: #808080;
+}
+
+.brand {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 1;
+}
+
+.active {
+    background-color: #808080;
+    color: white;
+}
+
+.btn1 {
+    margin-left: 10px;
+    border: 1px solid #808184;
+    border-radius: 5px;
+    background-color: white;
+    color: #808184;
+    width: 167px;
+    font-size: 11px !important;
+}
+
+    .btn1:focus-visible, .btn1:hover {
+        border: 1px solid #808184;
+    }
+
+.contain {
+    display: flex;
+    position: relative;
+    justify-content: end;
+    width: 100%;
+    padding-bottom: 24px;
+    padding-top: 10px;
+}
+.filterColor {
+    color: #808184;
+    font-size: 14px;
+}
+.vanish{
+    display:block;
+}
+@media (max-width:1000px){
+    .vanish {
+        display:none;
+    }
+}
+.clr {
+    color: #808184;
+    font-size:14px;
+    padding:0px 0px;
+    margin-right:0px;
+}
+.wi {
+    width: 202px !important;
+    border: 1px solid black;
+    border-radius:0px;
+}
+.fd{
+    border-color:black;
+}
+.dropdown-item {
+    width: 100%;
+    white-space: normal !important;
+    word-wrap: break-word;
+    background:none;
+}
+.dropdown-item:active, .dropdown-item:hover{
+        background-color: white;
+        color:black;
+}
+.btn:focus, .btn:active:focus{
+   box-shadow:none;
+}
+.po {
+    position: relative;
+    left: -20px;
+}
+.pos {
+    position: relative;
+    right: 50px; 
+}
+.page-link:focus{
+    box-shadow:none;
+}
+
+.noUi-connect {
+    background: #ff6224; /* Change progress color */
+}
+
+.noUi-handle {
+    background: #F6F6F6;
+    border-radius: 100%;
+}
+.noUi-horizontal .noUi-handle {
+    width: 21px;
+    height: 20px;
+    
+}
+.noUi-tooltip {
+    display: none;
+}
+.noUi-horizontal {
+    height: 10px;
+    width: 215px;
+}
+.dropdown-menu{
+    border-radius:0;
+    width:22% 
+}
+.dropdown-menu .pagination .page-link{
+    color:black;
+    border:solid black 1px;
+}
+.bsr{
+    border-bottom-left-radius:5px;
+    border-top-left-radius:5px;
+}
+.ber{
+    border-bottom-right-radius:5px;
+    border-top-right-radius:5px;
+}

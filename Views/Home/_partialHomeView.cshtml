@@ -1,0 +1,66 @@
+﻿@model IEnumerable<NewHomeModelBinding2.Models.NewHomesDTO> 
+
+<div class="container d-flex flex-wrap vw-100">
+
+	@foreach (var house in Model)
+	{
+		var data = house.NewHomesList.OrderByDescending(g => g.HouseSize).FirstOrDefault();
+
+		<div class="card ibox col-lg-4 col-sm-6 m-2">
+			<img class="card-img-top me-2 imgg" id="image_@house.HouseName" src="https://www.burbank.com.au/getmedia/2c3b28bb-3129-43ad-a950-21055762e6b3/Fairview_Moorpark.jpg"
+				 data-facades=@Url.Content("https://www.burbank.com.au/getmedia/2c3b28bb-3129-43ad-a950-21055762e6b3/Fairview_Moorpark.jpg")
+				 data-floorPlans=@Url.Content("https://www.burbank.com.au/getmedia/3994b3bd-1860-40d1-b545-ec0e8d95e742/Fairview_46.jpg"); />
+			<div class="brand">
+				@if (data.Brand == "Botanical")
+				{
+					<img src="@Url.Content("https://www.burbank.com.au/getmedia/b9ec5fba-d230-4370-b5e5-98217cfc4b90/B-Series_icon.png")" height="30" width="30" />
+				}
+				else
+				{
+					<img src="@Url.Content("https://www.burbank.com.au/getmedia/fe827d18-71ab-44a0-8188-10798b55f4af/O-Series_icon.png")" height="30" width="30" />
+				}
+			</div>
+			<div class="card-body d-flex">
+				<div class="position-relative start-0 ">
+					<p class="f1 m-1">
+						@house.HouseName <b><span id="size_@house.HouseName">@data.HouseSize</span></b>
+
+					</p>
+					<div class="d-flex ms-1">
+						<img src="https://www.burbank.com.au/images/Ico-Bed.svg" class="icon" /> <p class=" mb-1"> <span class="icotext" id="bed_@house.HouseName"> @data.BedRooms </span> </p>
+						<img src="https://www.burbank.com.au/images/Ico-Bath.svg" class="icon" /> <p class=" mb-1"> <span class="icotext" id="bath_@house.HouseName">@data.BathRooms </span> </p>
+						<img src="https://www.burbank.com.au/images/Ico-car.svg" class="icon" /> <p class=" mb-1"> <span class="icotext" id="car_@house.HouseName">@data.CarSpace  </span> </p>
+						<img src="https://www.burbank.com.au/images/Ico-table.svg" class="icon" /> <p class=" mb-1"> <span class="icotext" id="storey_@house.HouseName"> @data.Storey </span> </p>
+					</div>
+					<div class="pagination d-flex">
+						<p class="m-1 icotext">SIZES</p>
+						@{
+							var s = house.NewHomesList.Select(size => size.HouseSize).OrderBy(s => s.Value).ToList();
+						}
+						@foreach (var size in s)
+						{
+
+							<button class="me-1 btnn" onclick="dataChanger(@size,'@house.HouseName');SetActive(this)"> @size </button>
+						}
+
+
+					</div>
+				</div>
+
+				<div class="position-absolute  end-0">
+					<div>
+						<button class="bt">FAVOURITE</button>
+					</div>
+					<div>
+						@{
+							var lot = (int?)data.MinLotWidth;
+						}
+						<button id="lot_@house.HouseName" class="lot bt">@lot&nbsp;m LOT</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	}
+</div>
+
